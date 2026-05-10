@@ -295,35 +295,33 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
     <a class="hero-cta" href="https://jiang-yude.github.io/my-resources/" target="_blank">📦 江江教練 書籤頁 ↗</a>
   </section>
 
-  <!-- 講師名片（精簡版） -->
+  <!-- 講師名片（文字在上、照片橫幅在下） -->
   <section id="sec-bio" style="margin-bottom: 56px;">
-    <div style="background: var(--paper); border: 1.5px solid var(--text); border-radius: 8px; padding: 36px 40px; box-shadow: 5px 5px 0 var(--accent);">
-      <div style="display: flex; gap: 36px; align-items: center; flex-wrap: wrap; justify-content: center;">
+    <div style="background: var(--paper); border: 1.5px solid var(--text); border-radius: 8px; box-shadow: 5px 5px 0 var(--accent); overflow: hidden;">
 
-        <!-- 照片 -->
-        <div style="flex-shrink: 0;">
-          <img src="profile.jpg" alt="江江教練 形象照"
-               style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 4px 4px 0 var(--accent-deep);">
+      <!-- 文字區 -->
+      <div style="padding: 36px 40px 28px; text-align: center;">
+        <div style="font-family: 'Caveat', cursive; font-size: 32px; color: var(--accent); line-height: 1; margin-bottom: 6px;">Hi, I'm</div>
+        <h2 style="font-size: 40px; font-weight: 800; color: var(--text); margin-bottom: 22px; letter-spacing: 0.02em;">江昱德 <span style="font-size: 22px; color: var(--accent); font-weight: 600;">江江教練</span></h2>
+
+        <div style="display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px;">
+          <div style="font-size: 18px; color: var(--text); font-weight: 600;">🪄 隱性知識提煉師</div>
+          <div style="font-size: 18px; color: var(--text); font-weight: 600;">🤖 AI 應用規劃師</div>
+          <div style="font-size: 18px; color: var(--text); font-weight: 600;">📚 個人知識管理顧問</div>
         </div>
 
-        <!-- 文字 -->
-        <div style="flex: 1; min-width: 260px;">
-          <div style="font-family: 'Caveat', cursive; font-size: 32px; color: var(--accent); line-height: 1; margin-bottom: 6px;">Hi, I'm</div>
-          <h2 style="font-size: 38px; font-weight: 800; color: var(--text); margin-bottom: 18px; letter-spacing: 0.02em;">江昱德 <span style="font-size: 20px; color: var(--accent); font-weight: 600;">江江教練</span></h2>
-
-          <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px;">
-            <div style="font-size: 18px; color: var(--text); font-weight: 600;">🪄 隱性知識提煉師</div>
-            <div style="font-size: 18px; color: var(--text); font-weight: 600;">🤖 AI 應用規劃師</div>
-            <div style="font-size: 18px; color: var(--text); font-weight: 600;">📚 個人知識管理顧問</div>
-          </div>
-
-          <div style="border-top: 1.5px dashed var(--subtle); padding-top: 16px;">
-            <div style="font-family: 'Noto Serif TC', serif; font-weight: 700; margin-bottom: 6px; font-size: 15px;">📮 找我（傳送門）</div>
-            <a href="https://portaly.cc/Jiang_Yude" target="_blank" style="font-size: 16px; color: var(--accent); word-break: break-all; text-decoration: none; border-bottom: 1px solid var(--accent);">https://portaly.cc/Jiang_Yude</a>
-          </div>
+        <div style="display: inline-block; border-top: 1.5px dashed var(--subtle); padding-top: 14px;">
+          <span style="font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 15px; margin-right: 10px;">📮 找我（傳送門）</span>
+          <a href="https://portaly.cc/Jiang_Yude" target="_blank" style="font-size: 16px; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent);">https://portaly.cc/Jiang_Yude</a>
         </div>
-
       </div>
+
+      <!-- 照片橫幅 -->
+      <div style="width: 100%; height: 280px; overflow: hidden; border-top: 1.5px solid var(--text);">
+        <img src="profile.jpg" alt="江江教練 形象照"
+             style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block;">
+      </div>
+
     </div>
   </section>
 
@@ -342,7 +340,7 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
       </a>
       <a class="timeline-segment s2" href="#sec-2024">
         <div class="timeline-seg-time">2024 ★ 轉捩</div>
-        <div class="timeline-seg-name">全面轉向<br>AI 當塑膠</div>
+        <div class="timeline-seg-name">全面轉向<br>AI 當助教</div>
       </a>
       <a class="timeline-segment s3" href="#sec-2025h1">
         <div class="timeline-seg-time">2025 上半</div>
@@ -448,7 +446,7 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
     <div class="section-header" onclick="toggleSection(this)">
       <span class="section-time">2024 ★ 轉捩 ｜ 5 分</span>
       <div class="section-title-block">
-        <div class="section-title">三、全面轉向 AI ｜ 把 AI 當塑膠</div>
+        <div class="section-title">三、全面轉向 AI ｜ 把 AI 當助教</div>
         <div class="section-summary">結構化 vs 非結構化的大發現，AI 真正的藍海在這裡</div>
       </div>
       <span class="toggle-icon">▾</span>
@@ -458,7 +456,7 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
         <ul>
           <li>攝影教學開始正式融入 AI；用 AI 學東西</li>
           <li><strong>確認</strong>：以資訊傳播來說，AI 是這時代最強勢、最新的工具</li>
-          <li>攝影影像工作坊用 AI 介入——「<strong>把 AI 當塑膠</strong>」這件事</li>
+          <li>攝影影像工作坊用 AI 介入——「<strong>把 AI 當助教</strong>」這件事</li>
         </ul>
 
         <div class="quote-box">
