@@ -2,8 +2,8 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>5/10 文科生的 AI Agent 橫向對比 ｜ 課後實錄版 v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -307,42 +307,43 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
   border-radius: 50%; margin-top: 6px; flex-shrink: 0;
 }
 .dot-core  { background: #2E7D32; }
-.dot-add   { background: #1565C0; }
+.dot-add   { background: #5C7560; }
 .dot-skip  { background: #9E9E9E; }
 
-/* 課堂補充（藍色折疊） */
+/* 課堂補充（大地綠折疊） */
 details.lecture-add {
-  background: #E3F2FD;
-  border-left: 5px solid #1565C0;
+  background: rgba(92, 117, 96, 0.10);
+  border-left: 5px solid var(--accent2);
   padding: 14px 20px;
   border-radius: 6px;
   margin: 18px 0;
 }
 details.lecture-add > summary {
   cursor: pointer; font-weight: 700;
-  font-size: 17px; color: #0D47A1;
+  font-size: 17px; color: var(--accent-deep);
   list-style: none; padding-left: 8px;
 }
 details.lecture-add > summary::before {
   content: "📢 課堂補充 ｜ ";
-  font-size: 13px; letter-spacing: 0.1em; color: #1565C0;
+  font-size: 13px; letter-spacing: 0.1em;
+  color: var(--accent2);
 }
 details.lecture-add[open] > summary {
   margin-bottom: 12px;
-  border-bottom: 1px dashed #90CAF9;
+  border-bottom: 1px dashed rgba(92, 117, 96, 0.4);
   padding-bottom: 8px;
 }
 details.lecture-add .la-body {
   padding-top: 10px;
   font-size: 17px; line-height: 1.8;
-  color: #1A237E;
+  color: var(--text);
 }
 details.lecture-add .la-body p { margin-bottom: 12px; }
 details.lecture-add .la-body ul { margin: 6px 0 12px 24px; }
 details.lecture-add .la-body li { margin-bottom: 4px; }
 details.lecture-add .la-body blockquote {
-  border-left: 4px solid #1565C0;
-  background: rgba(21,101,192,0.08);
+  border-left: 4px solid var(--accent2);
+  background: rgba(92, 117, 96, 0.08);
   padding: 12px 18px; margin: 12px 0; border-radius: 4px;
   font-style: italic; font-size: 17px;
 }
@@ -405,8 +406,8 @@ details.lecture-skip-wrap > summary::before {
       <a href="#sec-2025h1">2025上</a>
       <a href="#sec-2025h2">2025下</a>
       <a href="#sec-2026">2026 進階</a>
-      <a href="#sec-bridge">過場</a>
-      <a href="#sec-qa">Q&amp;A</a>
+      <a href="#sec-bridge">分身小聚</a>
+      <a href="#sec-qa-actual">Q&amp;A 實錄</a>
       <a href="#sec-resources">資源</a>
     </nav>
   </div>
@@ -421,7 +422,7 @@ details.lecture-skip-wrap > summary::before {
     <div class="hero-subtitle">從 2022 到 2026，一條文科生用 AI 做文件推理的路徑——個人版的 ChatGPT、Claude Code、Codex、NotebookLM、Manus 心得</div>
     <div class="hero-quote">我的文件，才是我的系統</div>
     <br>
-    <a class="hero-cta" href="https://jiang-yude.github.io/my-resources/" target="_blank">📦 江江教練 書籤頁 ↗</a>
+    <a class="hero-cta" href="https://portaly.cc/Jiang_Yude" target="_blank">📮 找我（傳送門）｜ https://portaly.cc/Jiang_Yude ↗</a>
   </section>
 
   <!-- 三色點圖例（v2 新增） -->
@@ -524,7 +525,7 @@ details.lecture-skip-wrap > summary::before {
 
         <h4>給聽眾的兩個價值</h4>
         <ol>
-          <li><strong>給文科生</strong>：知識管理可以怎麼用，激發不同想像</li>
+          <li><strong>給工程師</strong>：看一個文科生視角的 AI 用法，激發不同想像</li>
           <li><strong>給做文書處理、不寫程式的人</strong>：這條路線幾乎沒人在分享，很有參考價值</li>
         </ol>
 
@@ -609,6 +610,17 @@ details.lecture-skip-wrap > summary::before {
           <span class="quote-label">關鍵領悟</span>
           工作流的改變，會用在跟你<strong>原本想像很不一樣的地方</strong>。
         </div>
+
+        <details class="lecture-add">
+          <summary>關鍵領悟背後的故事 ｜ 攝影助教變身腳本助教</summary>
+          <div class="la-body">
+            <p>我本來以為是要做一個能夠修正攝影構圖的 AI 助教，沒想到 4o 雖然能讀圖片，但只能讀上面的文字，做不了構圖分析。</p>
+            <p>我繞了一圈，回頭想到自己 2023 年怎麼用 AI 的——其實是輔助發想拍片腳本。然後就想：很多人想學短影音，最有問題的不是攝影（手機工具夠強了），而是腳本。</p>
+            <p>所以我做了腳本助教，丟進去就能產出可以拍攝的分鏡。</p>
+            <p><strong>這件事讓整個手機攝影課變成故事攝影課，或者說「長輩的故事攝影課」變得可行</strong>——三個小時就能讓長輩拍出自己的故事影片。</p>
+            <p>我之前一直以為強項是攝影，所以需要 AI 強化影像；結果實際上 AI 幫我最大忙的是腳本。這是我第一次意識到，AI 不只是優化原有流程，是會開創原本做不到的可能性。</p>
+          </div>
+        </details>
 
         <p>用 AI 幫大家把故事整理出來，意外順暢。</p>
 
@@ -711,12 +723,12 @@ details.lecture-skip-wrap > summary::before {
 
         <!-- 課堂補充：網頁版時代 ChatGPT 專案模式 + iPaaS 故事 -->
         <details class="lecture-add">
-          <summary>網頁版時代：ChatGPT 專案模式與 iPaaS 備考助理故事</summary>
+          <summary>網頁版時代：ChatGPT 專案模式與 iPAS AI 應用規劃師 證照考試故事</summary>
           <div class="la-body">
             <p>課堂有講到這段背景：在技能包出現之前，我們還在網頁版時代。</p>
             <blockquote>「2025 年之前叫聊天機器人；2026 年之後叫幹活機器人，或 AI 員工。」</blockquote>
             <p>ChatGPT 推出「專案模式」，讓我第一次真正感受到工作流程的改變——針對特定主題，把參考資料都丟進去，還可以設定專案指令。</p>
-            <p>最有感的是用 AI 去備考 iPaaS 應用規劃師。我把課綱、教材都丟進專案，設定指令後，考試前一天叫他：「你幫我把我過去聊的東西整理一下，把我不熟的、常搞混的、一直忘的，做一頁小抄給我。」他就做出來了。</p>
+            <p>最有感的是用 AI 去備考 iPAS AI 應用規劃師 證照考試。我把課綱、教材都丟進專案，設定指令後，考試前一天叫他：「你幫我把我過去聊的東西整理一下，把我不熟的、常搞混的、一直忘的，做一頁小抄給我。」他就做出來了。</p>
             <p><strong>那一刻我深刻感受到：他懂我，他會記得我需要什麼，不用每次都跟他講。</strong></p>
             <p>後來發現 ChatGPT 專案模式的三個痛點：</p>
             <ul>
@@ -748,6 +760,7 @@ details.lecture-skip-wrap > summary::before {
         <details class="lecture-add">
           <summary>Cowork 由來故事（經典）</summary>
           <div class="la-body">
+            <p>📌 此故事為江江教練口述，正在尋找原始出處中。（已查：Anthropic 官方部落格確認非技術團隊主動採用 Claude Code 是 Cowork 誕生的觀察來源，但「創辦人走過去問員工」的具體場景尚無公開原始引述。）</p>
             <p>Claude 的 Claude Code 最一開始是寫程式用的。有一天，Claude 的創辦人注意到：他們團隊裡除了工程師之外，有一個資料管理專家在學習 Claude Code——在學寫程式碼。</p>
             <p>創辦人就問：「你幹嘛寫程式碼？我教你來是要寫文案的。」</p>
             <p>那個人說：「我看大家用 Claude Code 都寫得好厲害，我這邊也有很多文件跟資料要整理，我也想用 Claude Code 幫我整理，只好去學寫程式。」</p>
@@ -802,7 +815,7 @@ details.lecture-skip-wrap > summary::before {
         <details class="lecture-add" open>
           <summary>桌面版時代的範式轉變：所有 AI 都來接你的文件</summary>
           <div class="la-body">
-            <blockquote>「網頁版時代是『我的文件分散在各 AI』；桌面版時代是『所有 AI 都來接我的文件』。」</blockquote>
+            <blockquote>「網頁版時代是『我的文件分散在各家 AI 平台上』；桌面版時代是『所有 AI 都來我的文件夾裡找資料，照我的規則跑』。」</blockquote>
             <p>網頁版時代：我要把資料傳給 ChatGPT，傳給 Gemini，傳給 Claude，是分開的，要分別上傳到不同的網頁。</p>
             <p>桌面版時代，概念完全變了：<strong>我在桌面開一個文件，可以讓 Codex 去讀，可以讓 Cowork 去讀，可以讓龍蝦 AI 去讀，可以讓各種工具去讀。</strong>文件在這裡，所有 AI 工具都接過來——這些工具就可以分工合作了。</p>
           </div>
@@ -991,10 +1004,10 @@ Claude Code → 開 3 個 Codex 子代理 → 並行查：
   <!-- ═══ 過場：給聽眾的下手練習 + 數位分身 ═══ -->
   <section class="section theme-dark" id="sec-bridge">
     <div class="section-header" onclick="toggleSection(this)">
-      <span class="section-time">過場 ｜ 2-3 分</span>
+      <span class="section-time">過場·分身小聚 ｜ 2-3 分</span>
       <div class="section-title-block">
         <div class="section-title">七、給聽眾的下手練習 → 過場到數位分身小聚</div>
-        <div class="section-summary">會議記錄當測試題的方法，以及為什麼 2025 年後我換成用數位分身玩</div>
+        <div class="section-summary">會議記錄當測試題的方法、2025 年後換成用數位分身玩，以及李白問題</div>
       </div>
       <span class="toggle-icon">▾</span>
     </div>
@@ -1045,24 +1058,11 @@ Claude Code → 開 3 個 Codex 子代理 → 並行查：
           </div>
         </details>
 
-      </div>
-    </div>
-  </section>
+        <div style="text-align: center; margin-top: 24px;">
+          <a class="hero-cta" href="https://twin-village.vercel.app/" target="_blank">🏘️ 數位分身小聚官網 ↗</a>
+        </div>
 
-  <!-- ═══ Q&A 備選池 ═══ -->
-  <section class="section theme-light" id="sec-qa">
-    <div class="section-header" onclick="toggleSection(this)">
-      <span class="section-time">Q&amp;A 備選 ｜ 5-10 分</span>
-      <div class="section-title-block">
-        <div class="section-title">八、Q&amp;A 備選池 ｜ 熱門題 + 常見問題</div>
-        <div class="section-summary">焦點題：李白如果活在 2026 會怎麼學 AI ｜ 20 題常見問題分 5 組備答 ｜ 課堂實錄 Q&amp;A</div>
-      </div>
-      <span class="toggle-icon">▾</span>
-    </div>
-    <div class="section-body">
-      <div class="section-body-inner">
-
-        <!-- 焦點題：李白 -->
+        <!-- 李白焦點題（從第八章移入） -->
         <h3>🔥 焦點題 ｜ 李白如果活在 2026 年，會怎麼學 AI？</h3>
 
         <div class="sub-card alt2">
@@ -1080,8 +1080,24 @@ Claude Code → 開 3 個 Codex 子代理 → 並行查：
           <p style="font-size: 15px; color: var(--text-soft); margin-top: 14px;">📌 你日常碰到的真實問題，也可以這樣拆。下半段（數位分身小聚）會深入。</p>
         </div>
 
-        <!-- 課堂實錄 Q&A -->
-        <h3>📢 課堂實錄 Q&amp;A</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 課堂實錄 Q&A（第八章） ═══ -->
+  <section class="section theme-light" id="sec-qa-actual">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">課堂實錄 ｜ 5 題</span>
+      <div class="section-title-block">
+        <div class="section-title">八、課堂實錄 Q&amp;A</div>
+        <div class="section-summary">現場真的回答到的 5 個問題（從清理稿擷取）</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+
+        <!-- 課堂實錄 Q&A（原第八章內容） -->
 
         <details class="lecture-add">
           <summary>Q&amp;A：那麼多 Skill 可以順利觸發嗎？</summary>
@@ -1143,115 +1159,6 @@ Claude Code → 開 3 個 Codex 子代理 → 並行查：
           </div>
         </details>
 
-        <div class="bleed-banner">
-          <div class="bleed-banner-label">F A Q  焦 點 提 醒</div>
-          這 20 題我都備好答案<br>
-          現場挑哪題答，看大家最關心什麼
-        </div>
-
-        <!-- 常見問題分組池（原規劃，課堂未講，標 skip） -->
-        <details class="lecture-skip-wrap">
-          <summary>🗂️ 常見問題池（分 5 組，現場挑答）</summary>
-          <div style="padding-top: 14px;">
-            <span class="lecture-skip-label">⚪ 原規劃·課堂未講（焦點題李白以另一形式講完，五組分組改線上備查）</span>
-
-            <!-- 組 1：入門 -->
-            <details class="sub-card" style="margin-top: 16px;">
-              <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
-                📘 組 1 ｜ 入門類（4 題）
-              </summary>
-              <ul style="margin-top: 16px;">
-                <li>ChatGPT 怎麼用？</li>
-                <li>ChatGPT 入門教學</li>
-                <li>AI 工具怎麼用？</li>
-                <li>生成式 AI 入門</li>
-              </ul>
-              <div class="quote-box" style="margin-top: 14px;">
-                <span class="quote-label">江江通用回應</span>
-                不要學「怎麼用」，要先想<strong>「我有什麼東西可以餵給他」</strong>。空著手去學工具，學完還是不會用。
-              </div>
-            </details>
-
-            <!-- 組 2：零基礎 / 門檻 -->
-            <details class="sub-card alt" style="margin-top: 16px;">
-              <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
-                🚪 組 2 ｜ 零基礎 / 門檻焦慮（5 題）
-              </summary>
-              <ul style="margin-top: 16px;">
-                <li>不懂程式可以學 AI 嗎？</li>
-                <li>學 AI 要從哪裡開始？</li>
-                <li>文科生可以學 AI 嗎？</li>
-                <li>上班族學 AI 要學什麼？</li>
-                <li>零基礎學 AI 推薦課程</li>
-              </ul>
-              <div class="quote-box" style="margin-top: 14px;">
-                <span class="quote-label">江江通用回應</span>
-                <strong>文科生反而是優勢</strong>——你寫得出完整句子、能描述脈絡，AI 才聽得懂你。<br>
-                從「你最想自動化掉的那件文書工作」開始，不要從「最熱門的工具」開始。
-              </div>
-            </details>
-
-            <!-- 組 3：付費 / 工具選擇 -->
-            <details class="sub-card alt2" style="margin-top: 16px;">
-              <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
-                💰 組 3 ｜ 付費 / 工具選擇（5 題）
-              </summary>
-              <ul style="margin-top: 16px;">
-                <li>ChatGPT 免費版夠用嗎？</li>
-                <li>ChatGPT 值得付費嗎？</li>
-                <li>AI 工具推薦 2025</li>
-                <li>ChatGPT 和 Gemini 哪個比較好用？</li>
-                <li>AI 免費課程推薦</li>
-              </ul>
-              <div class="quote-box" style="margin-top: 14px;">
-                <span class="quote-label">江江通用回應</span>
-                新手 $20 起步先用 <strong>Codex</strong>。要做深度文件分析再加 Claude Code。<br>
-                哪家順先訂一個月，<strong>你的系統不在任何一家平台上</strong>，掌握在自己手裡。
-              </div>
-            </details>
-
-            <!-- 組 4：Prompt / 提示詞 -->
-            <details class="sub-card" style="margin-top: 16px;">
-              <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
-                ✍️ 組 4 ｜ Prompt / 提示詞（2 題）
-              </summary>
-              <ul style="margin-top: 16px;">
-                <li>Prompt 怎麼下？</li>
-                <li>AI 提示詞怎麼寫？</li>
-              </ul>
-              <div class="quote-box" style="margin-top: 14px;">
-                <span class="quote-label">江江通用回應</span>
-                背 prompt 公式效率最低。<br>
-                真正有效的是：<strong>把你的工作流寫清楚</strong>給 AI 看（角色、情境、目標、輸出格式），AI 會自己找到該怎麼回。
-              </div>
-            </details>
-
-            <!-- 組 5：應用 + 焦慮 -->
-            <details class="sub-card alt" style="margin-top: 16px;">
-              <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
-                🛠️ 組 5 ｜ 應用 + 焦慮（4 題）
-              </summary>
-              <ul style="margin-top: 16px;">
-                <li>怎麼讓 AI 幫我寫文章？</li>
-                <li>AI 可以幫我做什麼？</li>
-                <li>上班族 AI 工具懶人包</li>
-                <li>AI 會不會取代我的工作？</li>
-              </ul>
-              <div class="quote-box" style="margin-top: 14px;">
-                <span class="quote-label">江江通用回應</span>
-                AI 不會取代你，<strong>會用 AI 的人會取代你</strong>——這句話聽爛了，但要補一句：<br>
-                <strong>會把自己的隱性知識餵給 AI 的人，會取代會用 AI 的人。</strong><br>
-                因為 AI 工具大家都拿得到，但你的私域知識只有你有。
-              </div>
-            </details>
-
-          </div>
-        </details>
-
-        <div class="tip-box" style="margin-top: 24px;">
-          <div class="tip-box-label">📌 講師現場提醒</div>
-          這 20 題我不會每題都答。會看聊天室聲量、看誰先丟出來、看哪題能銜接到「文件就是系統」這個主軸——所有答案都導向這個結論。
-        </div>
 
       </div>
     </div>
@@ -1268,25 +1175,14 @@ Claude Code → 開 3 個 Codex 子代理 → 並行查：
   <section class="resources" id="sec-resources">
     <h2>📦 資源 ｜ 結尾秀一次</h2>
 
-    <h3 style="color:#FFF8DC; margin-top: 20px;">江江教練 書籤頁（一頁式總入口）</h3>
-    <p>👉 <a href="https://jiang-yude.github.io/my-resources/" target="_blank">https://jiang-yude.github.io/my-resources/</a></p>
-    <p style="opacity: 0.85;">手機友善、可搜尋、可複製連結。AI 辦公室、數位分身小聚、Mika、提案範本、公開技能包、Cowork / Codex 技巧脆文清單都在裡面。</p>
-
-    <h3 style="color:#FFF8DC; margin-top: 28px;">公開技能包入口</h3>
+    <h3 style="color:#FFF8DC; margin-top: 20px;">公開技能包入口</h3>
     <ul>
       <li><strong>技能包大師</strong>（寫技能包的技能包）<br><a href="https://github.com/Jiang-Yude/skill-master" target="_blank">github.com/Jiang-Yude/skill-master</a></li>
       <li><strong>NotebookLM Connector</strong>（Codex / Claude Code 連 NotebookLM）<br><a href="https://github.com/Jiang-Yude/notebooklm-connector" target="_blank">github.com/Jiang-Yude/notebooklm-connector</a></li>
-      <li><strong>給爸媽的一封信 .skill</strong>（散文／小說／信件三模式）<br><a href="https://github.com/Jiang-Yude/prose-novel-layout" target="_blank">github.com/Jiang-Yude/prose-novel-layout</a></li>
     </ul>
 
-    <h3 style="color:#FFF8DC; margin-top: 28px;">範本與示範</h3>
-    <ul>
-      <li>會議記錄 × 共識分析範本：<a href="https://meeting-template-deploy.vercel.app" target="_blank">meeting-template-deploy.vercel.app</a></li>
-      <li>社群工具 AI 成員化比較：<a href="https://jiang-yude.github.io/my-social-ai-comparison/" target="_blank">jiang-yude.github.io/my-social-ai-comparison/</a></li>
-    </ul>
-
-    <h3 style="color:#FFF8DC; margin-top: 28px;">找我</h3>
-    <p>傳送門 ｜ <a href="https://portaly.cc/Jiang_Yude" target="_blank">https://portaly.cc/Jiang_Yude</a></p>
+    <h3 style="color:#FFF8DC; margin-top: 28px;">找我（傳送門）</h3>
+    <p>📮 <a href="https://portaly.cc/Jiang_Yude" target="_blank">https://portaly.cc/Jiang_Yude</a></p>
   </section>
 
 </div>
