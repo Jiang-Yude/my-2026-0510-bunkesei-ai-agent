@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5/10 文科生的 AI Agent 橫向對比 ｜ 事前規劃版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #F2EBDB;
+  --paper:        #FBF6E9;
+  --cream:        #EADFC6;
+  --postit:       #E8D89B;
+  --text:         #3A2E2A;
+  --text-soft:    #6B5C50;
+  --accent:       #8B6F47;
+  --accent-light: #A8896B;
+  --accent-deep:  #5E4A30;
+  --accent2:      #5C7560;
+  --accent3:      #B8956A;
+  --accent4:      #4A6478;
+  --subtle:       rgba(58, 46, 42, 0.2);
+  --line-soft:    rgba(58, 46, 42, 0.1);
+  --card:         #FBF6E9;
+  --card-deep:    #EADFC6;
+  --highlight-bg: rgba(139, 111, 71, 0.08);
+  --highlight-bg-strong: rgba(139, 111, 71, 0.16);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans TC", -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background: var(--bg);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(58,46,42,0.04) 31px, rgba(58,46,42,0.04) 32px);
+  color: var(--text);
+  line-height: 1.85; font-size: 19px; letter-spacing: 0.01em;
+}
+h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { font-family: "Noto Serif TC", serif; }
+
+/* Top Bar */
+.top-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(247, 241, 227, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1.5px solid var(--text);
+  padding: 12px 24px;
+  box-shadow: 0 2px 12px rgba(58, 46, 42, 0.08);
+}
+.top-bar-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; flex-wrap: nowrap; align-items: center;
+  gap: 14px; justify-content: space-between;
+  overflow-x: auto;
+}
+.top-bar-title {
+  font-family: "Noto Serif TC", serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--text); letter-spacing: 0.02em;
+  flex-shrink: 0; white-space: nowrap;
+}
+.top-nav { display: flex; gap: 2px; flex-wrap: nowrap; flex-shrink: 0; }
+.top-nav a {
+  font-size: 13px; color: var(--text); text-decoration: none;
+  padding: 4px 8px; border-radius: 4px; transition: all 0.2s;
+  font-weight: 600; white-space: nowrap;
+}
+.top-nav a:hover { background: var(--accent); color: #fff; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 48px 36px 120px; }
+
+/* Hero */
+.hero { padding: 64px 0 48px; border-bottom: 2px solid var(--subtle); margin-bottom: 56px; text-align: center; }
+.hero-meta { font-size: 18px; color: var(--accent); letter-spacing: 0.2em; font-weight: 600; margin-bottom: 24px; }
+.hero h1 { font-size: 56px; font-weight: 800; color: var(--text); line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 28px; }
+.hero-subtitle { font-size: 22px; color: var(--text); opacity: 0.75; margin-bottom: 36px; font-weight: 400; }
+.hero-quote { display: inline-block; font-size: 26px; font-style: italic; color: var(--accent); background: var(--highlight-bg); border-left: 5px solid var(--accent); padding: 22px 36px; border-radius: 4px; font-weight: 600; letter-spacing: 0.05em; }
+.hero-cta {
+  display: inline-block; margin-top: 28px;
+  background: var(--accent); color: #FFF8DC;
+  padding: 12px 26px; border-radius: 10px;
+  font-size: 17px; font-weight: 700; text-decoration: none;
+  letter-spacing: 0.05em; box-shadow: 0 4px 12px rgba(62, 39, 23, 0.18);
+  transition: transform 0.2s;
+}
+.hero-cta:hover { transform: translateY(-2px); }
+
+/* OGSM */
+.ogsm { background: var(--card); border: 2px solid var(--accent-light); border-radius: 16px; padding: 36px 40px; margin-bottom: 48px; box-shadow: 0 4px 16px rgba(93, 64, 55, 0.08); }
+.ogsm-title { font-size: 24px; font-weight: 800; color: var(--accent-deep); letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.ogsm-title::before { content: "🧭"; font-size: 28px; }
+.ogsm-subtitle { font-size: 16px; color: var(--text); opacity: 0.7; margin-bottom: 24px; }
+.ogsm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.ogsm-cell { background: var(--bg); padding: 22px 24px; border-radius: 10px; border-left: 5px solid var(--accent); }
+.ogsm-cell-label { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 0.18em; margin-bottom: 10px; }
+.ogsm-cell-title { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 12px; line-height: 1.5; }
+.ogsm-cell ul { font-size: 16px; color: var(--text); line-height: 1.7; padding-left: 20px; }
+.ogsm-cell li { margin-bottom: 6px; }
+
+/* Timeline */
+.timeline { background: var(--card); border: 1.5px solid var(--subtle); border-radius: 16px; padding: 32px; margin-bottom: 64px; }
+.timeline-title { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: 0.05em; }
+.timeline-subtitle { font-size: 15px; color: var(--text); opacity: 0.65; margin-bottom: 24px; }
+.timeline-bar {
+  display: flex; width: 100%; height: 110px;
+  border-radius: 12px; overflow: hidden;
+  border: 1.5px solid var(--subtle);
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(93, 64, 55, 0.08);
+}
+.timeline-segment {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 8px 4px;
+  color: var(--text); font-weight: 600;
+  border-right: 1.5px solid rgba(255, 248, 220, 0.4);
+  position: relative; min-width: 0;
+  cursor: pointer; transition: filter 0.2s;
+  text-decoration: none;
+}
+.timeline-segment:last-child { border-right: none; }
+.timeline-segment:hover { filter: brightness(1.08); }
+.timeline-segment.s0 { background: rgba(201, 178, 148, 0.55); }
+.timeline-segment.s1 { background: rgba(201, 149, 106, 0.65); color: #FFF8DC; }
+.timeline-segment.s2 { background: rgba(142, 90, 54, 0.75); color: #FFF8DC; }
+.timeline-segment.s3 { background: rgba(181, 112, 74, 0.78); color: #FFF8DC; }
+.timeline-segment.s4 { background: rgba(142, 90, 54, 0.85); color: #FFF8DC; }
+.timeline-segment.s5 { background: rgba(115, 70, 40, 0.92); color: #FFF8DC; }
+.timeline-segment.s6 { background: rgba(85, 50, 28, 0.98); color: #FFE6B8; }
+.timeline-seg-time { font-size: 13px; opacity: 0.85; margin-bottom: 4px; letter-spacing: 0.05em; font-weight: 500; }
+.timeline-seg-name { font-size: 14px; line-height: 1.3; font-weight: 700; padding: 0 4px; }
+.timeline-seg-mins { font-size: 11px; margin-top: 4px; opacity: 0.85; letter-spacing: 0.05em; }
+
+/* Sections */
+.section { margin-bottom: 64px; background: var(--card); border-radius: 18px; border: 2px solid var(--subtle); overflow: visible; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16); scroll-margin-top: 90px; }
+.section.theme-light { background: var(--paper) !important; border: 1.5px solid var(--text) !important; box-shadow: 5px 5px 0 var(--accent) !important; border-radius: 6px !important; }
+.section.theme-dark { background: var(--cream) !important; border: 1.5px solid var(--text) !important; box-shadow: 5px 5px 0 var(--accent2) !important; border-radius: 6px !important; }
+.section-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 32px; cursor: pointer;
+  border-bottom: 1.5px solid var(--subtle);
+  user-select: none;
+}
+.section.theme-light .section-header,
+.section.theme-dark .section-header { background: transparent; }
+.section-time {
+  flex-shrink: 0; font-size: 14px; font-weight: 700;
+  background: var(--accent); color: #FFF8DC;
+  padding: 6px 14px; border-radius: 999px;
+  letter-spacing: 0.08em;
+}
+.section-title-block { flex: 1; }
+.section-title { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+.section-summary { font-size: 14px; color: var(--text-soft); line-height: 1.5; }
+.toggle-icon { font-size: 28px; color: var(--accent); font-weight: 300; flex-shrink: 0; }
+.section.collapsed .section-body { display: none; }
+.section.collapsed .toggle-icon::after { content: ""; }
+.section-body-inner { padding: 32px 40px 40px; }
+.section-body-inner h3 { font-size: 22px; margin: 28px 0 14px; color: var(--accent-deep); }
+.section-body-inner h4 { font-size: 18px; margin: 22px 0 10px; color: var(--accent); }
+.section-body-inner p { margin-bottom: 14px; }
+.section-body-inner ul, .section-body-inner ol { margin: 8px 0 18px 28px; }
+.section-body-inner li { margin-bottom: 6px; }
+
+/* Quote box */
+.quote-box {
+  background: var(--highlight-bg-strong);
+  border-left: 5px solid var(--accent);
+  padding: 22px 28px; margin: 22px 0; border-radius: 4px;
+  font-size: 19px; line-height: 1.7;
+}
+.quote-box .quote-label {
+  display: inline-block; font-size: 12px; font-weight: 800;
+  color: var(--accent); letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+/* Bleed banner — 大金句 */
+.bleed-banner {
+  margin: 36px -40px;
+  background: var(--text); color: #FFE6B8;
+  padding: 50px 40px; text-align: center;
+  font-family: "Noto Serif TC", serif;
+  font-size: 30px; font-weight: 700; line-height: 1.5;
+}
+.bleed-banner-label {
+  display: inline-block; font-size: 13px; letter-spacing: 0.4em;
+  color: var(--accent3); margin-bottom: 20px; font-weight: 600;
+}
+
+/* Tip box */
+.tip-box {
+  background: var(--postit); border: 1.5px solid var(--accent-deep);
+  padding: 18px 24px; border-radius: 4px; margin: 22px 0;
+  box-shadow: 3px 3px 0 var(--accent-deep);
+  transform: rotate(-0.3deg);
+}
+.tip-box-label {
+  display: inline-block; font-size: 13px; font-weight: 800;
+  color: var(--accent-deep); letter-spacing: 0.18em;
+  margin-bottom: 8px;
+}
+
+/* Demo block */
+.demo-block {
+  background: var(--card-deep); border: 2px solid var(--accent-light);
+  padding: 24px 28px; border-radius: 10px; margin: 22px 0;
+}
+.demo-block-title {
+  font-size: 17px; font-weight: 800; color: var(--accent-deep);
+  letter-spacing: 0.1em; margin-bottom: 12px;
+}
+
+/* Sub card */
+.sub-card {
+  background: var(--paper); border: 1.5px solid var(--text);
+  border-radius: 8px; padding: 28px 32px; margin: 24px 0;
+  box-shadow: 3px 3px 0 var(--accent3);
+}
+.sub-card.alt { box-shadow: 3px 3px 0 var(--accent2); background: var(--cream); }
+.sub-card.alt2 { box-shadow: 3px 3px 0 var(--accent4); }
+.sub-card > h3:first-child, .sub-card > h4:first-child { margin-top: 0; }
+
+/* Tables */
+.simple-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 16px; }
+.simple-table th, .simple-table td { padding: 12px 16px; border: 1px solid var(--subtle); text-align: left; }
+.simple-table th { background: var(--cream); font-weight: 700; color: var(--accent-deep); }
+
+/* Warning box */
+.warning-box {
+  background: #FFF3E0; border: 2px solid #D84315;
+  padding: 20px 24px; border-radius: 8px; margin: 22px 0;
+  box-shadow: 3px 3px 0 rgba(216, 67, 21, 0.3);
+}
+.warning-box-label {
+  display: inline-block; font-size: 14px; font-weight: 800;
+  color: #D84315; letter-spacing: 0.15em; margin-bottom: 10px;
+}
+
+/* Resources card */
+.resources {
+  background: var(--text); color: #FFE6B8;
+  border-radius: 16px; padding: 36px 40px; margin: 48px 0 0;
+}
+.resources h2 { color: #FFF8DC; font-size: 26px; margin-bottom: 18px; }
+.resources a { color: #FFE6B8; text-decoration: underline; }
+.resources ul { margin-left: 20px; }
+.resources li { margin-bottom: 10px; }
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 38px; }
+  .hero-subtitle { font-size: 18px; }
+  .ogsm-grid { grid-template-columns: 1fr; }
+  .container { padding: 24px 18px 80px; }
+  .section-body-inner { padding: 22px 22px 28px; }
+  .bleed-banner { margin: 28px -22px; padding: 36px 24px; font-size: 22px; }
+  .timeline-bar { height: auto; flex-direction: column; }
+  .timeline-segment { padding: 14px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 頂部固定 Bar -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-title">5/10 文科生的 AI Agent 橫向對比</div>
+    <nav class="top-nav">
+      <a href="#sec-bio">講師</a>
+      <a href="#sec-open">開場</a>
+      <a href="#sec-2022">2022</a>
+      <a href="#sec-2023">2023</a>
+      <a href="#sec-2024">2024</a>
+      <a href="#sec-2025h1">2025上</a>
+      <a href="#sec-2025h2">2025下</a>
+      <a href="#sec-2026">2026 進階</a>
+      <a href="#sec-bridge">過場</a>
+      <a href="#sec-qa">Q&amp;A</a>
+      <a href="#sec-resources">資源</a>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-meta">江江教練 ｜ 2026 / 05 / 10（六）｜ 線上 60 分鐘</div>
+    <h1>文科生的<br>AI Agent 橫向對比</h1>
+    <div class="hero-subtitle">從 2022 到 2026，一條文科生用 AI 做文件推理的路徑——個人版的 ChatGPT、Claude Code、Codex、NotebookLM、Manus 心得</div>
+    <div class="hero-quote">我的文件，才是我的系統</div>
+    <br>
+    <a class="hero-cta" href="https://jiang-yude.github.io/my-resources/" target="_blank">📦 江江教練 書籤頁 ↗</a>
+  </section>
+
+  <!-- 講師名片 + 簡介 -->
+  <section id="sec-bio" style="margin-bottom: 56px;">
+    <div style="background: var(--paper); border: 1.5px solid var(--text); border-radius: 8px; padding: 36px 40px; box-shadow: 5px 5px 0 var(--accent);">
+      <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: start;">
+
+        <!-- 左欄：名片 -->
+        <div>
+          <div style="font-family: 'Caveat', cursive; font-size: 36px; color: var(--accent); line-height: 1; margin-bottom: 8px;">Hi, I'm</div>
+          <h2 style="font-size: 42px; font-weight: 800; color: var(--text); margin-bottom: 14px; letter-spacing: 0.02em;">江昱德 <span style="font-size: 22px; color: var(--accent); font-weight: 600;">江江教練</span></h2>
+
+          <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px;">
+            <div style="font-size: 17px; color: var(--text); font-weight: 600;">🪄 隱性知識提煉師</div>
+            <div style="font-size: 17px; color: var(--text); font-weight: 600;">🤖 AI 應用規劃師</div>
+            <div style="font-size: 17px; color: var(--text); font-weight: 600;">📚 個人知識管理顧問</div>
+          </div>
+
+          <div style="display: inline-block; background: var(--cream); border: 1.5px solid var(--accent-deep); padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 700; color: var(--accent-deep); letter-spacing: 0.05em; margin-bottom: 20px;">
+            🏅 iPAS 經濟部認證 AI 應用規劃師
+          </div>
+
+          <div style="border-top: 1.5px dashed var(--subtle); padding-top: 18px; margin-top: 4px;">
+            <div style="font-family: 'Noto Serif TC', serif; font-weight: 700; margin-bottom: 8px; font-size: 15px;">📮 找我（傳送門）</div>
+            <a href="https://portaly.cc/Jiang_Yude" target="_blank" style="font-size: 16px; color: var(--accent); word-break: break-all; text-decoration: none; border-bottom: 1px solid var(--accent);">https://portaly.cc/Jiang_Yude</a>
+          </div>
+        </div>
+
+        <!-- 右欄：簡介＋實績 -->
+        <div>
+          <p style="font-size: 17px; line-height: 1.85; margin-bottom: 18px; color: var(--text);">
+            我是<strong style="color: var(--accent-deep);">「光的故事影像製作」創辦人</strong>，
+            從攝影師出身，2023 年開始把 AI 帶進攝影教學，
+            到 2025 年確認自己真正想做的是<strong style="color: var(--accent);">把過去拿不出來的隱性知識提煉出來</strong>。
+            目前長期協助個人創業者、扶輪社、藝人公司與在地組織導入 AI 工作流。
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px;">
+
+            <!-- 長期 AI 顧問 -->
+            <div style="background: var(--cream); border-left: 4px solid var(--accent2); padding: 14px 18px; border-radius: 6px;">
+              <div style="font-size: 12px; font-weight: 800; color: var(--accent2); letter-spacing: 0.18em; margin-bottom: 6px;">長 期 AI 顧 問</div>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.8;">
+                <li>• 台北永續影響力扶輪社</li>
+                <li>• 飛易行銷有限公司</li>
+              </ul>
+            </div>
+
+            <!-- 顧問合作 -->
+            <div style="background: var(--cream); border-left: 4px solid var(--accent4); padding: 14px 18px; border-radius: 6px;">
+              <div style="font-size: 12px; font-weight: 800; color: var(--accent4); letter-spacing: 0.18em; margin-bottom: 6px;">顧 問 合 作</div>
+              <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.8;">
+                <li>• 西蓮教育基金會</li>
+                <li>• 旅學堂</li>
+                <li>• 天羽手作企業社</li>
+                <li>• 星奇兒創藝協會</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- AI 講師單位 -->
+          <div style="margin-top: 18px; background: var(--bg); border: 1.5px solid var(--accent-light); padding: 16px 20px; border-radius: 8px;">
+            <div style="font-size: 12px; font-weight: 800; color: var(--accent); letter-spacing: 0.18em; margin-bottom: 10px;">A I 講 師 ｜ 11 個 合 作 單 位</div>
+            <div style="font-size: 13px; line-height: 1.85; color: var(--text); display: flex; flex-wrap: wrap; gap: 6px 12px;">
+              <span>📍 嘉義縣政府勞工暨青年發展處</span>
+              <span>📍 台北聯合醫院</span>
+              <span>📍 桃園市政府政風處</span>
+              <span>📍 臺北科技大學</span>
+              <span>📍 臺北市立大學</span>
+              <span>📍 中國文化大學</span>
+              <span>📍 國立中央大學</span>
+              <span>📍 淡江大學</span>
+              <span>📍 新北市衛生局</span>
+              <span>📍 台中公益傳播基金會</span>
+              <span>📍 台中市陽光婦女協會</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; padding: 12px 16px; background: var(--highlight-bg); border-left: 3px solid var(--accent); font-size: 14px; color: var(--text-soft); font-style: italic;">
+            🎬 攝影師背景（光的故事影像製作 創辦人）會在今天的時間軸故事裡自然帶到。
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OGSM -->
+  <section class="ogsm">
+    <div class="ogsm-title">OGSM ｜ 這場講座要做什麼？</div>
+    <div class="ogsm-subtitle">用我自己 2022→2026 的工具切換史，當作個人版的 AI Agent 橫向對比</div>
+    <div class="ogsm-grid">
+      <div class="ogsm-cell">
+        <div class="ogsm-cell-label">O ｜ OBJECTIVE</div>
+        <div class="ogsm-cell-title">給文科生一條沒人在分享的路</div>
+        <ul>
+          <li>主流講 vibe coding，這場講「文件推理」</li>
+          <li>不寫程式、做文書處理的人也能用 AI Agent</li>
+          <li>體感過「文件就是系統」</li>
+        </ul>
+      </div>
+      <div class="ogsm-cell">
+        <div class="ogsm-cell-label">G ｜ GOAL</div>
+        <div class="ogsm-cell-title">學完能做到的具體事</div>
+        <ul>
+          <li>知道每代 AI 工具我為什麼換、換到哪</li>
+          <li>知道桌面版 Claude Code / Codex 怎麼搭</li>
+          <li>知道怎麼用 Codex 連 NotebookLM、用 Manus 做社群</li>
+          <li>有一份「會議記錄測試題」可以回家測各家 AI</li>
+        </ul>
+      </div>
+      <div class="ogsm-cell">
+        <div class="ogsm-cell-label">S ｜ STRATEGY</div>
+        <div class="ogsm-cell-title">怎麼帶才會有效</div>
+        <ul>
+          <li>用時間軸視覺化，每個年份對應一個工具版本</li>
+          <li>不追功能介紹，講「我為什麼換」</li>
+          <li>桌面版三家對比 + 真實工作流</li>
+          <li>下半段（數位分身小聚）另外整理</li>
+        </ul>
+      </div>
+      <div class="ogsm-cell">
+        <div class="ogsm-cell-label">M ｜ MEASURE</div>
+        <div class="ogsm-cell-title">怎麼知道有沒有打中</div>
+        <ul>
+          <li>聊天室有沒有人提到「我也是文科生」</li>
+          <li>結尾書籤頁的點擊數</li>
+          <li>會後有沒有人帶著「會議記錄」來私訊</li>
+          <li>數位分身小聚的關注度</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline 視覺主軸 -->
+  <section class="timeline">
+    <div class="timeline-title">📍 我的 AI 工具切換史 ｜ 2022 → 2026</div>
+    <div class="timeline-subtitle">每段顏色越深代表 AI 在我工作流中的份量越重；前半段講到 2026 的進階應用，數位分身段下半另談。</div>
+    <div class="timeline-bar">
+      <a class="timeline-segment s0" href="#sec-2022">
+        <div class="timeline-seg-time">2022 年底</div>
+        <div class="timeline-seg-name">ChatGPT 笨<br>決定教他</div>
+      </a>
+      <a class="timeline-segment s1" href="#sec-2023">
+        <div class="timeline-seg-time">2023</div>
+        <div class="timeline-seg-name">攝影為主<br>AI 陪聊腳本</div>
+      </a>
+      <a class="timeline-segment s2" href="#sec-2024">
+        <div class="timeline-seg-time">2024 ★ 轉捩</div>
+        <div class="timeline-seg-name">全面轉向<br>AI 當塑膠</div>
+      </a>
+      <a class="timeline-segment s3" href="#sec-2025h1">
+        <div class="timeline-seg-time">2025 上半</div>
+        <div class="timeline-seg-name">知識管理<br>→ 隱性知識</div>
+      </a>
+      <a class="timeline-segment s4" href="#sec-2025h2">
+        <div class="timeline-seg-time">2025 下半</div>
+        <div class="timeline-seg-name">Skill 大爆發<br>逼上桌面版</div>
+      </a>
+      <a class="timeline-segment s5" href="#sec-2026">
+        <div class="timeline-seg-time">2026</div>
+        <div class="timeline-seg-name">Code × Codex<br>× NotebookLM × Manus</div>
+      </a>
+      <a class="timeline-segment s6" href="#sec-bridge">
+        <div class="timeline-seg-time">下半段</div>
+        <div class="timeline-seg-name">數位分身小聚<br>（另談）</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ 開場 ═══ -->
+  <section class="section theme-light" id="sec-open">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">開場 2 分</span>
+      <div class="section-title-block">
+        <div class="section-title">〇、開場：文科生為什麼要做這個分享</div>
+        <div class="section-summary">市面上幾乎都在講 vibe coding，這場是另一條路：文科生 × 文件推理</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>我不是寫程式的。市面上大家用 Cursor、Claude Code、Codex 幾乎都是 vibe coding，但我做的是另一條路——<strong>文科生的文件推理</strong>。</p>
+        <p>這條路真的很冷門，幾乎要面對面向人展示一次，他才會理解。所以今天我把它公開。</p>
+
+        <h4>給聽眾的兩個價值</h4>
+        <ol>
+          <li><strong>給文科生</strong>：知識管理可以怎麼用，激發不同想像</li>
+          <li><strong>給做文書處理、不寫程式的人</strong>：這條路線幾乎沒人在分享，很有參考價值</li>
+        </ol>
+
+        <p>接下來 30 分鐘，我帶你走一遍我從 2022 年底到現在的路徑。這也是一份「個人版的 AI Agent 橫向對比」，你會看到每一代我為什麼換工具、換思路。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2022 年底 ═══ -->
+  <section class="section theme-dark" id="sec-2022">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">2022 年底 ｜ 3-4 分</span>
+      <div class="section-title-block">
+        <div class="section-title">一、ChatGPT 很笨，所以我決定教他</div>
+        <div class="section-summary">私域 vs 公開知識的分界，影響我接下來三年的方向</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>2022 年底我用 ChatGPT，第一感覺：很笨。</p>
+        <p>但反而想通了一件事：<strong>我要教他</strong>。</p>
+        <p>我發現他不懂台灣的在地知識、不懂冷門知識。</p>
+
+        <div class="quote-box">
+          <span class="quote-label">核心領悟</span>
+          <strong>私域、獨特、專業的知識</strong>，一定要我們去教他。<br>
+          <strong>公開知識</strong>不用擔心，他會自己越來越聰明。
+        </div>
+
+        <p>這個判斷影響我接下來三年的方向——所有後面的選擇，都是在強化「我自己的私域知識怎麼餵給 AI」。</p>
+
+        <div class="tip-box">
+          <div class="tip-box-label">💡 金句</div>
+          他笨的地方，正好是我能加值的地方。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2023 ═══ -->
+  <section class="section theme-light" id="sec-2023">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">2023 ｜ 3 分</span>
+      <div class="section-title-block">
+        <div class="section-title">二、攝影為主，AI 只是腳本陪聊</div>
+        <div class="section-summary">AI 還沒真正改變工作流，主業還是拍片</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <ul>
+          <li>主業還是攝影、拍片</li>
+          <li>ChatGPT 只用來陪我發想拍片腳本</li>
+          <li>試著融入攝影教學，但只是輕度介入</li>
+        </ul>
+        <p>這一年 AI 還沒真正改變我的工作流。但我已經開始觀察。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2024 ═══ -->
+  <section class="section theme-dark" id="sec-2024">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">2024 ★ 轉捩 ｜ 5 分</span>
+      <div class="section-title-block">
+        <div class="section-title">三、全面轉向 AI ｜ 把 AI 當塑膠</div>
+        <div class="section-summary">結構化 vs 非結構化的大發現，AI 真正的藍海在這裡</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <ul>
+          <li>攝影教學開始正式融入 AI；用 AI 學東西</li>
+          <li><strong>確認</strong>：以資訊傳播來說，AI 是這時代最強勢、最新的工具</li>
+          <li>攝影影像工作坊用 AI 介入——「<strong>把 AI 當塑膠</strong>」這件事</li>
+        </ul>
+
+        <div class="quote-box">
+          <span class="quote-label">關鍵領悟</span>
+          工作流的改變，會用在跟你<strong>原本想像很不一樣的地方</strong>。
+        </div>
+
+        <p>用 AI 幫大家把故事整理出來，意外順暢。</p>
+
+        <div class="bleed-banner">
+          <div class="bleed-banner-label">大 發 現</div>
+          過去非結構化的文件、知識很難整理<br>
+          但 AI 很會
+        </div>
+
+        <h4>結構化 vs 非結構化（這場講座貫穿的概念）</h4>
+        <table class="simple-table">
+          <tr><th>類型</th><th>例子</th><th>狀態</th></tr>
+          <tr><td>結構化資料</td><td>表格、數據、ERP</td><td>中小企業 KM 那一套，已經很成熟</td></tr>
+          <tr><td><strong style="color:var(--accent)">非結構化資料</strong></td><td>會議記錄、訪談、故事</td><td><strong>這才是 AI 真正厲害的地方</strong>——藍海</td></tr>
+        </table>
+
+        <p>這時候我才看清，我不是要做「整理已經整齊的東西」，我要做的是「<strong>整理過去整理不出來的東西</strong>」。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2025 上半 ═══ -->
+  <section class="section theme-light" id="sec-2025h1">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">2025 上半 ｜ 5 分</span>
+      <div class="section-title-block">
+        <div class="section-title">四、從知識管理 → 隱性知識提煉</div>
+        <div class="section-summary">為什麼我換掉「知識管理」這塊招牌</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>本來想走「<strong>知識管理</strong>」這個招牌。</p>
+
+        <p>但發現問題：</p>
+        <ul>
+          <li>知識管理太大</li>
+          <li>大家一查都會聯想到中小企業 ERP 那一套（傳統流程的數據型管理）</li>
+          <li>跟我做的事根本不是同一件事</li>
+        </ul>
+
+        <div class="quote-box">
+          <span class="quote-label">定位翻轉</span>
+          跟知識管理已經有衝突，所以我決定加上「<strong style="color:var(--accent)">隱性知識提煉</strong>」。<br>
+          2025 上半的定位：更聚焦在「把原本拿不出來的東西提煉出來」。
+        </div>
+
+        <p>你會看到，我的招牌從<strong>攝影 → 知識管理 → 隱性知識提煉</strong>，每一次都是因為 AI 的能力讓我看到了之前看不到的東西。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2025 下半 ═══ -->
+  <section class="section theme-dark" id="sec-2025h2">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">2025 下半 ｜ 5-6 分</span>
+      <div class="section-title-block">
+        <div class="section-title">五、Skill（技能包）大爆發 ｜ 逼上桌面版 Claude Code</div>
+        <div class="section-summary">能力可複製性的覺醒，網頁版扛不住，被逼到桌面版一用就回不去</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+        <p>Skill（技能包）出現，意識到這是大爆發：</p>
+
+        <div class="bleed-banner">
+          <div class="bleed-banner-label">能 力 可 複 製</div>
+          我的能力可以複製給別人<br>
+          我也可以複製別人的能力來給自己用
+        </div>
+
+        <p>確定：「<strong>技能包</strong>」就是我真正的知識載體。</p>
+
+        <h4>為什麼網頁版扛不住</h4>
+        <div class="sub-card">
+          <ul>
+            <li>我技能包<strong>破一萬隻以上</strong></li>
+            <li>技能包越編越複雜：除了 prompt，還會疊知識庫</li>
+            <li>網頁版每次更新很容易漏東漏西</li>
+            <li><strong>逼不得已用桌面版 Claude Code → 一用就回不去</strong></li>
+          </ul>
+        </div>
+
+        <p>接著開始用桌面版 Anthropic 生態（Claude Cowork、反重力一度也試過）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2026 進階應用（含技術面附錄整合） ═══ -->
+  <section class="section theme-light" id="sec-2026">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">2026 進階 ｜ 8-10 分</span>
+      <div class="section-title-block">
+        <div class="section-title">六、最近的進階應用 ｜ 桌面版 × Codex × NotebookLM × Manus</div>
+        <div class="section-summary">五種搭配的工作流：御三家分工 / NotebookLM 三層 / 子代理 / Codex 做圖卡 / Manus 跑社群</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+
+        <!-- 6-1 御三家定位 -->
+        <h3>6-1 ｜ 桌面版 AI 御三家定位</h3>
+        <table class="simple-table">
+          <tr><th>工具</th><th>比喻</th><th>適合做什麼</th></tr>
+          <tr><td><strong>Claude Code</strong></td><td>工廠／Windows</td><td>造工具、深度文件分析、輔助決策</td></tr>
+          <tr><td><strong>Claude Cowork</strong></td><td>辦公室／Mac</td><td>穩定、打開就工作</td></tr>
+          <tr><td><strong>Codex</strong></td><td>幹活好幫手</td><td>清理資料、爬文、批次整理</td></tr>
+          <tr><td>反重力</td><td>已棄用</td><td>我昨天才解安裝 😑</td></tr>
+        </table>
+
+        <div class="tip-box">
+          <div class="tip-box-label">🚪 新手入坑建議</div>
+          先用 <strong>Codex</strong>（$20 就能認真用，習慣 Agent 流程、整理資料），等要做深度分析再加 Claude Code，兩個交叉比對效果最好。
+        </div>
+
+        <!-- 6-2 我的文件才是我的系統 -->
+        <h3>6-2 ｜ 核心金句：我的文件才是我的系統</h3>
+        <div class="bleed-banner">
+          <div class="bleed-banner-label">桌 面 版 Agent 的 核 心 優 勢</div>
+          你的文件、資料、工作狀態<br>
+          全部存在你自己的資料夾裡
+        </div>
+        <ul>
+          <li>今天 Codex 誠意足就用 Codex</li>
+          <li>哪天 Claude 算力補齊就切回 Claude</li>
+          <li>系統不在任何一家平台上，掌握在自己手裡</li>
+        </ul>
+
+        <!-- 6-3 NotebookLM -->
+        <h3>6-3 ｜ Claude Code 呼叫 NotebookLM（重點教學）</h3>
+
+        <h4>三層分工</h4>
+        <div class="sub-card alt">
+          <table class="simple-table">
+            <tr><th>角色</th><th>負責</th></tr>
+            <tr><td><strong>NotebookLM</strong></td><td>記憶層（抓取、生成字幕）</td></tr>
+            <tr><td><strong>Codex</strong></td><td>清理層（整理、分類、上標籤）</td></tr>
+            <tr><td><strong>Claude</strong></td><td>推理層（深度分析、輔助決策）</td></tr>
+          </table>
+        </div>
+
+        <h4>工作流分兩種</h4>
+        <ul>
+          <li><strong>少量資料</strong>：Claude 直接讀 NotebookLM</li>
+          <li><strong>大量資料</strong>（例如 YouTuber 頻道 300 支影片）：先 Codex 整理→上標籤→存本地知識庫，再讓 Claude 讀整理過的版本</li>
+        </ul>
+
+        <h4>工具：notebooklm-connector（我做的開源技能包，MIT）</h4>
+        <p>👉 <a href="https://github.com/Jiang-Yude/notebooklm-connector" target="_blank">github.com/Jiang-Yude/notebooklm-connector</a></p>
+        <p>裝完，就能在 Claude Code / Codex 對話裡直接問你的 NotebookLM。</p>
+
+        <div class="warning-box">
+          <div class="warning-box-label">⚠️ 重要教訓（一定要講）</div>
+          <strong>不要用沙盒模式 / 安全模式安裝呼叫 NotebookLM 的 MCP</strong><br>
+          原因：MCP 就是要連網、要突破沙盒<br>
+          結果：沙盒會出問題，連不上、或連上但功能不全
+        </div>
+
+        <p style="font-size: 15px; color: var(--text-soft);">補充工具：Chrome 外掛「YouTube to NotebookLM」可以把整個頻道抓進 NotebookLM。</p>
+
+        <!-- 6-4 子代理 / 多代理 -->
+        <h3>6-4 ｜ Claude Code 呼叫 Codex（子代理 / 多代理並行搜尋）</h3>
+
+        <p><strong>子代理（sub-agent）</strong>：主代理（Claude Code）開出多個子代理，並行做不同角度的查詢、處理，最後彙整。</p>
+
+        <h4>實用場景：寫文章查證事實</h4>
+        <div class="sub-card alt2">
+          <p>用 Claude Code 寫脆文／方格子／觀點日記時，遇到具體數字、事實要查證 → <strong>走 Codex 多代理</strong>，不要直接用 Claude WebSearch。</p>
+          <ul>
+            <li>省 Claude 用量</li>
+            <li>Codex 多代理交叉驗證更可靠</li>
+            <li>對「具體數字」型數據特別重要</li>
+          </ul>
+        </div>
+
+        <h4>預設三角度（可換）</h4>
+        <pre style="background: var(--cream); padding: 18px 22px; border-radius: 8px; font-size: 14px; line-height: 1.6; overflow-x: auto; border-left: 4px solid var(--accent);">
+Claude Code → 開 3 個 Codex 子代理 → 並行查：
+  ├ 官方資料
+  ├ 正面評價
+  └ 負面評價
+              ↓
+         Codex 整合彙整</pre>
+
+        <!-- 6-5 Codex 做自媒體圖卡 -->
+        <h3>6-5 ｜ Codex 做圖卡 ｜ 自媒體工作流</h3>
+
+        <p>最近發現 Codex 不只是清理資料，還能<strong>從 Threads 抓回我自己的脆文 → 做成 HTML 圖卡 → 截圖出來變成發文素材</strong>。</p>
+
+        <div class="sub-card">
+          <h4>codex-threads-backup 工作流</h4>
+          <ol>
+            <li>Codex 爬 Threads → 補回本地發文看板</li>
+            <li>把脆文做成 HTML 圖卡</li>
+            <li>用 Playwright 截圖成 PNG</li>
+            <li>歸檔到 Obsidian 對應資料夾</li>
+          </ol>
+          <p style="font-size: 15px; color: var(--text-soft); margin-top: 12px;">這條工作流的價值：以前圖卡要自己慢慢排版、自己截圖；現在 Codex 一條龍做完。</p>
+        </div>
+
+        <!-- 6-6 Manus 雲端 Agent -->
+        <h3>6-6 ｜ Manus 雲端 Agent ｜ 社群媒體管理</h3>
+
+        <div class="quote-box">
+          <span class="quote-label">雲端 vs 地端</span>
+          雲端 Agent 你把任務丟過去，它就<strong>自己處理，像外包一樣</strong>。
+        </div>
+
+        <h4>我目前的用法</h4>
+        <ul>
+          <li>抓我自己的 <strong>Threads 文跟圖文卡</strong>（這部分 Codex 也能做，但 Manus 在 Meta 系列特別合）</li>
+          <li>做成<strong>短影音</strong></li>
+          <li>丟到 <strong>IG Reels</strong></li>
+        </ul>
+
+        <p><strong>Manus 跟 Meta 很合，管社群帳號方便。</strong></p>
+
+        <h4>地端 vs 雲端的分工原則</h4>
+        <table class="simple-table">
+          <tr><th>情境</th><th>用什麼</th></tr>
+          <tr><td>本地檔案、隱性知識、要看到過程</td><td>地端 Agent（Claude Code、Codex）</td></tr>
+          <tr><td>線上工具串聯（社群、雲服務）</td><td>全雲端化（Manus）會比較簡單</td></tr>
+        </table>
+
+        <h4>資安研究（我有查官方）</h4>
+        <ul>
+          <li>不是業配，但有人會貼中國新聞給我，所以我去查官方資料</li>
+          <li>用 Manus 爬官方資安網頁＋做 6 張圖表，<strong>花 77 點數</strong></li>
+          <li>Manus 官方資安頁：<a href="https://trust.manus.im/" target="_blank">https://trust.manus.im/</a></li>
+        </ul>
+
+        <p style="font-size: 15px; color: var(--text-soft);">我沒有掛保證，只是覺得一直猜測不如研究條款比較實際。</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 過場：給聽眾的下手練習 + 數位分身 ═══ -->
+  <section class="section theme-dark" id="sec-bridge">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">過場 ｜ 2-3 分</span>
+      <div class="section-title-block">
+        <div class="section-title">七、給聽眾的下手練習 → 過場到數位分身小聚</div>
+        <div class="section-summary">會議記錄當測試題的方法，以及為什麼 2025 年後我換成用數位分身玩</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+
+        <h3>建議自己準備一道測試題</h3>
+
+        <div class="sub-card alt">
+          <h4>會議記錄分析（我以前最推薦的測試題）</h4>
+          <ol>
+            <li>找一場局勢有點複雜的會議</li>
+            <li>請 AI 整理：重點脈絡、每個人立場、有沒有共識、有沒有隱憂</li>
+            <li>你覺得整理得很好，這就成為你的<strong>範本</strong></li>
+            <li>之後就可以拿同樣一份去測各家 AI</li>
+          </ol>
+        </div>
+
+        <div class="quote-box">
+          <span class="quote-label">時代的變化</span>
+          這個測試法我用到 <strong>2024 年底還行</strong>，2025 年就不太出得來——AI 都太聰明了，題目不夠複雜就比不出差異。
+        </div>
+
+        <h3>所以 2025 年底之後，我換成用數位分身去玩</h3>
+        <p>下半段就帶大家進入 → <strong>數位分身小聚</strong>。</p>
+
+        <div class="tip-box">
+          <div class="tip-box-label">🔗 過場句</div>
+          複雜文件推理的概念，需要更難的測試題。數位分身就是 2025 之後我的新測試題。
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Q&A 備選池 ═══ -->
+  <section class="section theme-light" id="sec-qa">
+    <div class="section-header" onclick="toggleSection(this)">
+      <span class="section-time">Q&amp;A 備選 ｜ 5-10 分</span>
+      <div class="section-title-block">
+        <div class="section-title">八、Q&amp;A 備選池 ｜ 熱門題 + 常見問題</div>
+        <div class="section-summary">焦點題：李白如果活在 2026 會怎麼學 AI ｜ 20 題常見問題分 5 組備答</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="section-body">
+      <div class="section-body-inner">
+
+        <!-- 焦點題：李白 -->
+        <h3>🔥 焦點題 ｜ 李白如果活在 2026 年，會怎麼學 AI？</h3>
+
+        <div class="sub-card alt2">
+          <p>歷史名人只是熱身。</p>
+          <p>真正的玩法是：<strong>同時調動五位 AI 顧問拆一個複雜議題</strong>。</p>
+          <p>李白會這樣做：把詩、把酒、把交遊、把流放路線、把當時的政治環境，分別餵給五個專屬顧問——詩學顧問、酒文化顧問、唐代政治顧問、地理顧問、心理顧問——讓他們各自從自己的角度給意見，李白自己當總編，把五份意見揉成自己的決定。</p>
+
+          <div class="quote-box" style="margin-top: 18px;">
+            <span class="quote-label">🪶 江江式答覆</span>
+            李白不會去學「ChatGPT 怎麼用」。<br>
+            他會問：<strong>怎麼把我這輩子讀過的、走過的、喝過的酒，全部整理成五位可以隨時請教的顧問？</strong><br>
+            這就是<strong>製作 AI 顧問</strong>的概念——把一堆文件清理、重整、分層，建構檢索入口，效果才會精準。
+          </div>
+
+          <p style="font-size: 15px; color: var(--text-soft); margin-top: 14px;">📌 你日常碰到的真實問題，也可以這樣拆。下半段（數位分身小聚）會深入。</p>
+        </div>
+
+        <div class="bleed-banner">
+          <div class="bleed-banner-label">F A Q  焦 點 提 醒</div>
+          這 20 題我都備好答案<br>
+          現場挑哪題答，看大家最關心什麼
+        </div>
+
+        <!-- 常見問題分組池 -->
+        <h3>🗂️ 常見問題池（分 5 組，現場挑答）</h3>
+
+        <!-- 組 1：入門 -->
+        <details class="sub-card">
+          <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
+            📘 組 1 ｜ 入門類（4 題）
+          </summary>
+          <ul style="margin-top: 16px;">
+            <li>ChatGPT 怎麼用？</li>
+            <li>ChatGPT 入門教學</li>
+            <li>AI 工具怎麼用？</li>
+            <li>生成式 AI 入門</li>
+          </ul>
+          <div class="quote-box" style="margin-top: 14px;">
+            <span class="quote-label">江江通用回應</span>
+            不要學「怎麼用」，要先想<strong>「我有什麼東西可以餵給他」</strong>。空著手去學工具，學完還是不會用。
+          </div>
+        </details>
+
+        <!-- 組 2：零基礎 / 門檻 -->
+        <details class="sub-card alt">
+          <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
+            🚪 組 2 ｜ 零基礎 / 門檻焦慮（5 題）
+          </summary>
+          <ul style="margin-top: 16px;">
+            <li>不懂程式可以學 AI 嗎？</li>
+            <li>學 AI 要從哪裡開始？</li>
+            <li>文科生可以學 AI 嗎？</li>
+            <li>上班族學 AI 要學什麼？</li>
+            <li>零基礎學 AI 推薦課程</li>
+          </ul>
+          <div class="quote-box" style="margin-top: 14px;">
+            <span class="quote-label">江江通用回應</span>
+            <strong>文科生反而是優勢</strong>——你寫得出完整句子、能描述脈絡，AI 才聽得懂你。<br>
+            從「你最想自動化掉的那件文書工作」開始，不要從「最熱門的工具」開始。
+          </div>
+        </details>
+
+        <!-- 組 3：付費 / 工具選擇 -->
+        <details class="sub-card alt2">
+          <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
+            💰 組 3 ｜ 付費 / 工具選擇（5 題）
+          </summary>
+          <ul style="margin-top: 16px;">
+            <li>ChatGPT 免費版夠用嗎？</li>
+            <li>ChatGPT 值得付費嗎？</li>
+            <li>AI 工具推薦 2025</li>
+            <li>ChatGPT 和 Gemini 哪個比較好用？</li>
+            <li>AI 免費課程推薦</li>
+          </ul>
+          <div class="quote-box" style="margin-top: 14px;">
+            <span class="quote-label">江江通用回應</span>
+            新手 $20 起步先用 <strong>Codex</strong>。要做深度文件分析再加 Claude Code。<br>
+            哪家順先訂一個月，<strong>你的系統不在任何一家平台上</strong>，掌握在自己手裡。
+          </div>
+        </details>
+
+        <!-- 組 4：Prompt / 提示詞 -->
+        <details class="sub-card">
+          <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
+            ✍️ 組 4 ｜ Prompt / 提示詞（2 題）
+          </summary>
+          <ul style="margin-top: 16px;">
+            <li>Prompt 怎麼下？</li>
+            <li>AI 提示詞怎麼寫？</li>
+          </ul>
+          <div class="quote-box" style="margin-top: 14px;">
+            <span class="quote-label">江江通用回應</span>
+            背 prompt 公式效率最低。<br>
+            真正有效的是：<strong>把你的工作流寫清楚</strong>給 AI 看（角色、情境、目標、輸出格式），AI 會自己找到該怎麼回。
+          </div>
+        </details>
+
+        <!-- 組 5：應用 + 焦慮 -->
+        <details class="sub-card alt">
+          <summary style="cursor: pointer; font-size: 19px; font-weight: 700; color: var(--accent-deep); list-style: none;">
+            🛠️ 組 5 ｜ 應用 + 焦慮（4 題）
+          </summary>
+          <ul style="margin-top: 16px;">
+            <li>怎麼讓 AI 幫我寫文章？</li>
+            <li>AI 可以幫我做什麼？</li>
+            <li>上班族 AI 工具懶人包</li>
+            <li>AI 會不會取代我的工作？</li>
+          </ul>
+          <div class="quote-box" style="margin-top: 14px;">
+            <span class="quote-label">江江通用回應</span>
+            AI 不會取代你，<strong>會用 AI 的人會取代你</strong>——這句話聽爛了，但要補一句：<br>
+            <strong>會把自己的隱性知識餵給 AI 的人，會取代會用 AI 的人。</strong><br>
+            因為 AI 工具大家都拿得到，但你的私域知識只有你有。
+          </div>
+        </details>
+
+        <div class="tip-box" style="margin-top: 24px;">
+          <div class="tip-box-label">📌 講師現場提醒</div>
+          這 20 題我不會每題都答。會看聊天室聲量、看誰先丟出來、看哪題能銜接到「文件就是系統」這個主軸——所有答案都導向這個結論。
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Resources ═══ -->
+  <section class="resources" id="sec-resources">
+    <h2>📦 資源 ｜ 結尾秀一次</h2>
+
+    <h3 style="color:#FFF8DC; margin-top: 20px;">江江教練 書籤頁（一頁式總入口）</h3>
+    <p>👉 <a href="https://jiang-yude.github.io/my-resources/" target="_blank">https://jiang-yude.github.io/my-resources/</a></p>
+    <p style="opacity: 0.85;">手機友善、可搜尋、可複製連結。AI 辦公室、數位分身小聚、Mika、提案範本、公開技能包、Cowork / Codex 技巧脆文清單都在裡面。</p>
+
+    <h3 style="color:#FFF8DC; margin-top: 28px;">公開技能包入口</h3>
+    <ul>
+      <li><strong>技能包大師</strong>（寫技能包的技能包）<br><a href="https://github.com/Jiang-Yude/skill-master" target="_blank">github.com/Jiang-Yude/skill-master</a></li>
+      <li><strong>NotebookLM Connector</strong>（Codex / Claude Code 連 NotebookLM）<br><a href="https://github.com/Jiang-Yude/notebooklm-connector" target="_blank">github.com/Jiang-Yude/notebooklm-connector</a></li>
+      <li><strong>給爸媽的一封信 .skill</strong>（散文／小說／信件三模式）<br><a href="https://github.com/Jiang-Yude/prose-novel-layout" target="_blank">github.com/Jiang-Yude/prose-novel-layout</a></li>
+    </ul>
+
+    <h3 style="color:#FFF8DC; margin-top: 28px;">範本與示範</h3>
+    <ul>
+      <li>會議記錄 × 共識分析範本：<a href="https://meeting-template-deploy.vercel.app" target="_blank">meeting-template-deploy.vercel.app</a></li>
+      <li>社群工具 AI 成員化比較：<a href="https://jiang-yude.github.io/my-social-ai-comparison/" target="_blank">jiang-yude.github.io/my-social-ai-comparison/</a></li>
+    </ul>
+
+    <h3 style="color:#FFF8DC; margin-top: 28px;">找我</h3>
+    <p>傳送門 ｜ <a href="https://portaly.cc/Jiang_Yude" target="_blank">https://portaly.cc/Jiang_Yude</a></p>
+  </section>
+
+</div>
+
+<script>
+function toggleSection(header) {
+  const section = header.closest('.section');
+  section.classList.toggle('collapsed');
+  const icon = header.querySelector('.toggle-icon');
+  if (section.classList.contains('collapsed')) {
+    icon.textContent = '▸';
+  } else {
+    icon.textContent = '▾';
+  }
+}
+// 預設全部展開（事前規劃版）
+</script>
+
+</body>
+</html>
