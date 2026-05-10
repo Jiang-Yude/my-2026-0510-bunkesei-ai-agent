@@ -158,8 +158,31 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
 .section.collapsed .section-body { display: none; }
 .section.collapsed .toggle-icon::after { content: ""; }
 .section-body-inner { padding: 32px 40px 40px; }
-.section-body-inner h3 { font-size: 22px; margin: 28px 0 14px; color: var(--accent-deep); }
-.section-body-inner h4 { font-size: 18px; margin: 22px 0 10px; color: var(--accent); }
+.section-body-inner h3 {
+  font-size: 22px;
+  margin: 56px -16px 18px;
+  padding: 16px 22px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  color: #FFF8DC;
+  border-radius: 10px;
+  border-left: 6px solid var(--accent-deep);
+  box-shadow: 4px 4px 0 var(--accent3);
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+.section-body-inner > h3:first-child { margin-top: 12px; }
+.section-body-inner h3 + p,
+.section-body-inner h3 + ul,
+.section-body-inner h3 + ol,
+.section-body-inner h3 + .quote-box,
+.section-body-inner h3 + .sub-card { margin-top: 18px; }
+.section-body-inner h4 {
+  font-size: 18px; margin: 26px 0 12px;
+  color: var(--accent-deep);
+  border-bottom: 2px dotted var(--accent-light);
+  padding-bottom: 6px;
+  display: inline-block;
+}
 .section-body-inner p { margin-bottom: 14px; }
 .section-body-inner ul, .section-body-inner ol { margin: 8px 0 18px 28px; }
 .section-body-inner li { margin-bottom: 6px; }
@@ -627,17 +650,18 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
         <p style="font-size: 15px; color: var(--text-soft);">補充工具：Chrome 外掛「YouTube to NotebookLM」可以把整個頻道抓進 NotebookLM。</p>
 
         <!-- 6-4 子代理 / 多代理 -->
-        <h3>6-4 ｜ 子代理 ｜ 一個主代理開出多個分身並行幹活</h3>
+        <h3>6-4 ｜ 子代理 ｜ 我最常用的就是這個</h3>
 
-        <p><strong>子代理（sub-agent）</strong>：主代理開出多個子代理，並行做不同角度的查詢、處理，最後彙整成一份結果。</p>
+        <h4>第一個用法 ｜ 我上網查資料就會用子代理</h4>
+        <p>我自己上網查資料、做研究的時候，<strong>幾乎都用子代理</strong>。一個任務丟下去，它自己拆成幾個方向並行去查，最後合起來給我。比我自己一篇一篇翻快太多。</p>
 
         <div class="quote-box">
           <span class="quote-label">歷史鋪陳</span>
-          子代理不是新概念。<strong>Grok 網頁版之前就有了</strong>——你給一個任務，它自己拆成多個 agent 並行去做，最後合起來。<br>
-          現在的桌面版 Agent 把這個能力做得更完整，而且可以跨工具呼叫。
+          子代理不是新東西。<strong>Grok 網頁版很早就可以用子代理了</strong>——你給一個任務，它自己拆成多個 agent 並行去做。<br>
+          現在的桌面版 Agent 把這個能力做得更完整、可以跨工具呼叫，但本質是同一件事。
         </div>
 
-        <h4>兩條路：Claude Code 呼叫 Codex ｜ Codex 內建子代理</h4>
+        <h4>第二個用法 ｜ Claude Code 呼叫 Codex ｜ Codex 內建子代理</h4>
 
         <div class="sub-card">
           <h4 style="margin-top: 0;">🅰 Claude Code 呼叫 Codex</h4>
