@@ -649,50 +649,47 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
 
         <p style="font-size: 15px; color: var(--text-soft);">補充工具：Chrome 外掛「YouTube to NotebookLM」可以把整個頻道抓進 NotebookLM。</p>
 
-        <!-- 6-4 子代理 / 多代理 -->
-        <h3>6-4 ｜ 子代理 ｜ 我最常用的就是這個</h3>
+        <!-- 6-4 三個獨立概念：子代理 ｜ 各家評比 ｜ Claude Code 呼叫 Codex 查資料 -->
+        <h3>6-4 ｜ 多代理工作流 ｜ 三個獨立概念</h3>
 
-        <h4>第一個用法 ｜ 我上網查資料就會用子代理</h4>
-        <p>我自己上網查資料、做研究的時候，<strong>幾乎都用子代理</strong>。一個任務丟下去，它自己拆成幾個方向並行去查，最後合起來給我。比我自己一篇一篇翻快太多。</p>
+        <p>大家很容易把這三件事搞在一起，實際上它們是<strong>三個獨立概念</strong>，可以分開用，也可以疊加用。</p>
 
-        <div class="quote-box">
-          <span class="quote-label">歷史鋪陳</span>
-          子代理不是新東西。<strong>Grok 網頁版很早就可以用子代理了</strong>——你給一個任務，它自己拆成多個 agent 並行去做。<br>
-          現在的桌面版 Agent 把這個能力做得更完整、可以跨工具呼叫，但本質是同一件事。
+        <!-- 概念 1：子代理 -->
+        <div class="sub-card">
+          <h4 style="margin-top: 0; font-size: 20px; color: var(--accent-deep); border-bottom: 2px solid var(--accent); padding-bottom: 8px;">🔹 概念 1 ｜ 子代理（sub-agent）</h4>
+          <p>一個主代理，<strong>開出多個分身並行幹活</strong>，最後合成一份結果。一個任務丟下去，它自己拆成幾個方向同時做。</p>
+          <p style="font-size: 15px; color: var(--text-soft);">📌 <strong>這不是新東西</strong>——Grok 網頁版很早就可以用子代理了。我自己上網查資料、做研究，幾乎都用子代理。比一篇一篇翻快太多。</p>
         </div>
 
-        <h4>第二個用法 ｜ Claude Code 呼叫 Codex ｜ Codex 內建子代理</h4>
+        <!-- 概念 2：各家評比 -->
+        <div class="sub-card alt">
+          <h4 style="margin-top: 0; font-size: 20px; color: var(--accent-deep); border-bottom: 2px solid var(--accent2); padding-bottom: 8px;">🔹 概念 2 ｜ 各家評比（多家 AI 交叉比對）</h4>
+          <p>同一個問題丟給<strong>不同家 AI</strong>（Claude / GPT / Gemini / Grok / Codex），把答案攤開來比對。</p>
+          <ul>
+            <li>看出每家的<strong>偏見、盲點</strong></li>
+            <li>不同家給出共同答案 → 信心度高</li>
+            <li>不同家給出衝突答案 → 知道這題沒共識，需要自己判斷</li>
+          </ul>
+          <p style="font-size: 15px; color: var(--text-soft);">📌 跟「子代理」的差別：子代理是<strong>同一家 AI 開分身</strong>；各家評比是<strong>不同家 AI 對打</strong>。</p>
+        </div>
 
-        <div class="sub-card">
-          <h4 style="margin-top: 0;">🅰 Claude Code 呼叫 Codex</h4>
-          <p>主控用 Claude Code（深度推理），子代理用 Codex 並行幹活（爬文、查資料、批次整理）。</p>
+        <!-- 概念 3：Claude Code 呼叫 Codex 去查資料 -->
+        <div class="sub-card alt2">
+          <h4 style="margin-top: 0; font-size: 20px; color: var(--accent-deep); border-bottom: 2px solid var(--accent4); padding-bottom: 8px;">🔹 概念 3 ｜ Claude Code 呼叫 Codex 去查資料</h4>
+          <p><strong>Claude 不太會搜尋資料，但它可以叫 Codex 去查。</strong></p>
+          <p>用 Claude Code 寫文章、做分析時，遇到要查證具體數字／事實 → 直接讓 Claude Code 開 Codex 子代理去爬，省 Claude 用量、查得更準。</p>
           <p style="font-size: 15px;">⚙️ <strong>需要先安裝環境</strong>。教學在這：<br>
           👉 <a href="https://www.threads.com/@jiang_yude_coach/post/DX3FO3qE8wX" target="_blank" style="color: var(--accent); font-weight: 700; border-bottom: 2px solid var(--accent); text-decoration: none;">Claude 不太會搜尋資料，但它可以叫 Codex 去查</a></p>
-        </div>
 
-        <div class="sub-card alt">
-          <h4 style="margin-top: 0;">🅱 Codex 本身就有子代理</h4>
-          <p>不用接外部，<strong>Codex 內建</strong>就可以開子代理並行——對「需要多角度交叉比對」的任務特別好用。</p>
-        </div>
-
-        <h4>實用場景：寫文章查證事實</h4>
-        <div class="sub-card alt2">
-          <p>用 Claude Code 寫脆文／方格子／觀點日記時，遇到具體數字、事實要查證 → <strong>走 Codex 多代理</strong>，不要直接用 Claude WebSearch。</p>
-          <ul>
-            <li>省 Claude 用量</li>
-            <li>Codex 多代理交叉驗證更可靠</li>
-            <li>對「具體數字」型數據特別重要</li>
-          </ul>
-        </div>
-
-        <h4>預設三角度（可換）</h4>
-        <pre style="background: var(--cream); padding: 18px 22px; border-radius: 8px; font-size: 14px; line-height: 1.6; overflow-x: auto; border-left: 4px solid var(--accent);">
+          <h4 style="margin-top: 18px; border: none; display: block;">三角度範例（可換）</h4>
+          <pre style="background: var(--cream); padding: 16px 20px; border-radius: 8px; font-size: 14px; line-height: 1.6; overflow-x: auto; border-left: 4px solid var(--accent4); margin-top: 8px;">
 Claude Code → 開 3 個 Codex 子代理 → 並行查：
   ├ 官方資料
   ├ 正面評價
   └ 負面評價
               ↓
          Codex 整合彙整</pre>
+        </div>
 
         <!-- 6-5 Codex 做自媒體圖卡 -->
         <h3>6-5 ｜ Codex 做圖卡 ｜ 自媒體工作流</h3>
