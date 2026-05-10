@@ -544,11 +544,11 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
             <li>我技能包<strong>破一萬隻以上</strong></li>
             <li>技能包越編越複雜：除了 prompt，還會疊知識庫</li>
             <li>網頁版每次更新很容易漏東漏西</li>
-            <li><strong>逼不得已用桌面版 Claude Code → 一用就回不去</strong></li>
+            <li><strong>逼不得已用桌面版 Claude Cowork → 一用就回不去</strong></li>
           </ul>
         </div>
 
-        <p>接著開始用桌面版 Anthropic 生態（Claude Cowork、反重力一度也試過）。</p>
+        <p>接著開始用各種 Agent：<strong>Claude Code、Codex、反重力</strong>等等。</p>
       </div>
     </div>
   </section>
@@ -627,9 +627,28 @@ h1, h2, h3, h4, .section-title, .hero h1, .ogsm-cell-title, .timeline-title { fo
         <p style="font-size: 15px; color: var(--text-soft);">補充工具：Chrome 外掛「YouTube to NotebookLM」可以把整個頻道抓進 NotebookLM。</p>
 
         <!-- 6-4 子代理 / 多代理 -->
-        <h3>6-4 ｜ Claude Code 呼叫 Codex（子代理 / 多代理並行搜尋）</h3>
+        <h3>6-4 ｜ 子代理 ｜ 一個主代理開出多個分身並行幹活</h3>
 
-        <p><strong>子代理（sub-agent）</strong>：主代理（Claude Code）開出多個子代理，並行做不同角度的查詢、處理，最後彙整。</p>
+        <p><strong>子代理（sub-agent）</strong>：主代理開出多個子代理，並行做不同角度的查詢、處理，最後彙整成一份結果。</p>
+
+        <div class="quote-box">
+          <span class="quote-label">歷史鋪陳</span>
+          子代理不是新概念。<strong>Grok 網頁版之前就有了</strong>——你給一個任務，它自己拆成多個 agent 並行去做，最後合起來。<br>
+          現在的桌面版 Agent 把這個能力做得更完整，而且可以跨工具呼叫。
+        </div>
+
+        <h4>兩條路：Claude Code 呼叫 Codex ｜ Codex 內建子代理</h4>
+
+        <div class="sub-card">
+          <h4 style="margin-top: 0;">🅰 Claude Code 呼叫 Codex</h4>
+          <p>主控用 Claude Code（深度推理），子代理用 Codex 並行幹活（爬文、查資料、批次整理）。</p>
+          <p style="font-size: 14px; color: var(--text-soft);">⚙️ <strong>需要先安裝環境</strong>（CLI、credentials、整合腳本）。我有寫過脆文教學，書籤頁的「Cowork / Codex 技巧」段就有相關連結。</p>
+        </div>
+
+        <div class="sub-card alt">
+          <h4 style="margin-top: 0;">🅱 Codex 本身就有子代理</h4>
+          <p>不用接外部，<strong>Codex 內建</strong>就可以開子代理並行——對「需要多角度交叉比對」的任務特別好用。</p>
+        </div>
 
         <h4>實用場景：寫文章查證事實</h4>
         <div class="sub-card alt2">
